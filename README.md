@@ -25,7 +25,7 @@ pip install alphavantage_wrapper
 ```python
 from alphavantage_wrapper import AlphaVantageAPI
 
-api = AlphaVantageAPI(api_key='YOUR_API_KEY')
+api = AlphaVantageAPI(api_key='DJNJJYE2WYUEL1LU')
 
 # Get historical stock data
 data = api.get_historical_stock_data('AAPL', '2020-01-01', '2020-12-31')
