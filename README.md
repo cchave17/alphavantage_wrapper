@@ -1,47 +1,37 @@
 # Alpha Vantage Wrapper
 
-This project is a Python wrapper for the Alpha Vantage API. It allows for easy access and manipulation of financial data, including historical stock price data, real-time stock price data, Forex data, cryptocurrency data, and technical indicators. 
+This Python module provides an easy-to-use wrapper for the Alpha Vantage API, which allows you to fetch financial market data.
 
 ## Features
 
-- Fetch historical stock price data
-- Fetch real-time stock price data
-- Fetch Forex data
-- Fetch cryptocurrency data
-- Fetch technical indicators
-- Fetch sector performance data
-- Handle API rate limits
+- Fetch intraday stock price data for a specific stock symbol
+
+## Requirements
+
+- Python 3.7 or newer
+- pandas library
+- requests library
 
 ## Installation
 
 To install the Alpha Vantage Wrapper, you can use pip:
 
 ```bash
-pip install alphavantage_wrapper
+pip install -r requirements.txt
 ```
 
-## Usage
+## Usage (Main.py)
 
 ```python
-from alphavantage_wrapper import AlphaVantageAPI
+from alphavantage_wrapper.api import AlphaVantageAPI
+import os
 
-api = AlphaVantageAPI(api_key='DJNJJYE2WYUEL1LU')
-
-# Get historical stock data
-data = api.get_historical_stock_data('AAPL', '2020-01-01', '2020-12-31')
-
-# Get real-time stock data
-data = api.get_real_time_stock_data('AAPL')
-
-# ... (other examples)
+api_key = os.getenv('ALPHA_VANTAGE_API_KEY')  # set your actual API KEY as an enviroment variable
+alpha_vantage = AlphaVantageAPI(api_key)
+df = alpha_vantage.get_intraday_stock_data('AAPL', '60min')
+print(df)
 ```
 
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
+```bash
+python main.py
+```
